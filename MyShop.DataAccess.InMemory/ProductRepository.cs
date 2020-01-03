@@ -74,7 +74,7 @@ namespace MyShop.DataAccess.InMemory
 
             if (productToDelete != null)
             {
-                Products.Remove(Products);
+                Products.Remove(productToDelete);
             }
             else
             {
