@@ -13,11 +13,11 @@ namespace MyShop.WebUI.Controllers
     public class ProductCategoryManagerController : Controller
     {
 
-        ProductCategoryRepository Context;
+        InMemoryRepository<ProductCategory> Context;
 
         public ProductCategoryManagerController()
         {
-            Context = new ProductCategoryRepository();
+            Context = new InMemoryRepository<ProductCategory>();
         }
 
         // GET: ProductCategoryManager
@@ -42,7 +42,7 @@ namespace MyShop.WebUI.Controllers
             else
             {
                 Context.Insert(productcategory);
-                Context.commit();
+                Context.Commit();
 
                 return RedirectToAction("Index");
             }
@@ -78,7 +78,7 @@ namespace MyShop.WebUI.Controllers
                 productcategoryToEdit.CategoryName = productcategory.CategoryName;
 
 
-                Context.commit();
+                Context.Commit();
 
                 return RedirectToAction("Index");
 
@@ -111,7 +111,7 @@ namespace MyShop.WebUI.Controllers
             else
             {
                 Context.Delete(Id);
-                Context.commit();
+                Context.Commit();
                 return RedirectToAction("Index");
             }
         }
